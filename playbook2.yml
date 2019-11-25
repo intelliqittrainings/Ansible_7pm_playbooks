@@ -1,0 +1,14 @@
+---
+- name: Install tomcat8 and copy tomcat-users.xml file
+  hosts: all
+  tasks:
+   - name: Install tomcat8
+     apt:
+      name: tomcat8
+      state: present
+      update_cache: yes
+   - name: Copy tomcat-users.xml file
+     copy:
+      src: tomcat-users.xml
+      dest: /etc/tomcat8
+...

@@ -1,0 +1,13 @@
+---
+- name: Create user on the managed nodes
+  hosts: all
+  tasks:
+   - name: Creating users
+     user:
+      name: Raju
+      password: intelliq
+      uid: 1357
+      home: /home/Raju
+      shell: /bin/bash
+
+...
