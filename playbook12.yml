@@ -1,0 +1,15 @@
+---
+- name: Install,uninstall,upgrade s/w packages
+  hosts: all
+  tasks:
+   - name: Install,uninstall different s/w's
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: tree,b: present,c: yes}
+      - {a: git,b: absent,c: no}
+      - {a: openjdk-8-jdk,b: latest,c: no}
+      - {a: apache2,b: absent,c: yes}
+

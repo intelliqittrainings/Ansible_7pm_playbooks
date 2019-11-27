@@ -1,0 +1,10 @@
+---
+- name: User Creation using host scope variables
+  hosts: webserver
+  tasks:
+   - name: User Creation
+     user:
+      name: "{{a}}"
+      password: "{{b}}"
+      uid: "{{c}}"
+      shell: "{{d}}"

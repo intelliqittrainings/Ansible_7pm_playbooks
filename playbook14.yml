@@ -1,0 +1,33 @@
+---
+- name: Configure Jenkins on devserver
+  hosts: devserver
+  tasks:
+   - name: Install s/w used for jenkins
+     apt:
+      name: "{{item}}"
+      state: present
+     with_items:
+      - openjdk-8-jdk
+      - git
+      - maven
+   - name: download jenkins.war
+     get_url:
+      url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+      dest: /tmp
+- name: Install tomcat8 on qa and prodservers
+  hosts: servers
+  tasks:
+   - name: Install tomcat8 and tomcat8-admin
+     apt:
+      name: "{{item}}"
+      state: present
+     with_items:
+      - tomcat8
+      - tomcat8-admin
+   - name: copy tomcat-users.xml file
+     copy:
+      src: tomcat-users.xml
+      dest: /etc/tomcat8
+
+
+
