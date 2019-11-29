@@ -1,0 +1,19 @@
+---
+- name: Implementing tags
+  hosts: all
+  tasks:
+   - name: Install tree
+     apt:
+      name: tree
+      state: present
+     tags: tree_installtion
+   - name: User creation
+     user:
+      name: Rajni
+      password: intelliq
+     tags: user_creation
+   - name: file creation
+     file:
+      name: file1
+      state: touch
+...

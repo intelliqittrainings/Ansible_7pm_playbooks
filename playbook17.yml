@@ -1,0 +1,11 @@
+---
+- name: Implementing when statements
+  hosts: all
+  vars:
+   - a: 20
+  tasks:
+   - name: Install firewalld
+     apt:
+      name: firewalld
+      state: present
+     when: a == 10
