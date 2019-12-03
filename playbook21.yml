@@ -1,0 +1,8 @@
+---
+- name: User creation
+  user:
+   name: anusha
+   password: intelliq
+   home: /home/anusha
+   uid: 13579
+...

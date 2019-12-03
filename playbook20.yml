@@ -1,0 +1,16 @@
+---
+- name: Create a file called abc if there is no dir called abc
+  hosts: all
+  tasks:
+   - name: Check if dir abc is present
+     stat: 
+      path: /home/ubuntu/abc
+     register: result
+   - name: display output of above stat module
+     debug:
+      var: result
+   - name: Create file
+     file:
+      name: /home/ubuntu/abc
+      state: touch
+     when: result.stat.exists == false
